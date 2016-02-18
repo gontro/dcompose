@@ -24,7 +24,7 @@ hash docker-compose 2>/dev/null || {
 
     if [[ $(id -u) != "0" ]]; then
         sudo mkdir -p /opt/bin
-        sudo curl -oL /opt/bin/docker-compose https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m`
+        sudo curl -Lo /opt/bin/docker-compose https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m`
         sudo chmod +x /opt/bin/docker-compose
     fi
 }
