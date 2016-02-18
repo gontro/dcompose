@@ -8,19 +8,19 @@ BOOTSTRAP_PATH="`pwd`/${BOOTSTRAP_FILE}"
 
 # Must pass at least one argument to docker-compose
 if [[ ! $1 ]]; then
-    echo -e "\nUsage: dcompose <docker_compose_arg1> [<docker_compose_arg2>, ...]\n" 1>&2
+    echo -e "Usage: dcompose <docker_compose_arg1> [<docker_compose_arg2>, ...]\n" 1>&2
     exit 1
 fi
 
 # Ensure dcompose.yml exists
 if [[ ! -a "${CONFIG_PATH}" ]]; then
-    echo -e "\nError: cannot find '${CONFIG_FILE}'" 1>&2
+    echo "Error: cannot find '${CONFIG_FILE}'" 1>&2
     exit 1
 fi
 
 # Check to see if docker-compose is installed and install if necessary
 hash docker-compose 2>/dev/null || {
-    echo -e "\nInstalling docker-compose.."
+    echo "Installing docker-compose.."
 
     if [[ $(id -u) != "0" ]]; then
         sudo mkdir -p /opt/bin
@@ -31,7 +31,8 @@ hash docker-compose 2>/dev/null || {
 
 # Export environment variables
 if [[ ! -a "${BOOTSTRAP_PATH}" ]]; then
-    echo -e "\nWarning: '${BOOTSTRAP_FILE}' was not found in project directory.\nNo environment variables were exported."
+    echo "Warning: '${BOOTSTRAP_FILE}' was not found in project directory."
+    echo "No environment variables were exported."
 else
     source "${BOOTSTRAP_PATH}"
 fi
