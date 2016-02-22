@@ -23,7 +23,7 @@ hash docker-compose 2>/dev/null || {
     echo "Installing docker-compose.."
 
     if [[ $(id -u) != "0" ]]; then
-        sudo sh -c "mkdir -p /opt/bin && curl -Lo c/opt/bin/docker-compose https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` && chmod +x /opt/bin/docker-compose"
+        sudo sh -c "mkdir -p /opt/bin && curl -Lo /opt/bin/docker-compose https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` && chmod +x /opt/bin/docker-compose"
     fi
 }
 
